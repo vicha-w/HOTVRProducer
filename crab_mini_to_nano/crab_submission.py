@@ -27,7 +27,7 @@ if args.isData:
 requestName = "nanoaod_hotvr_UL"+args.year+"v1_230510"
 
 yaml_file_dict = {}
-with open('{}/crab_mini_to_nano/input_files.yaml'.format(os.getcwd())) as yaml_f:
+with open('{}/crab_mini_to_nano/input_files_sf.yaml'.format(os.getcwd())) as yaml_f:
     try:
         yaml_file_dict = yaml.safe_load(yaml_f)
     except yaml.YAMLError as exc:
