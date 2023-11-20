@@ -49,7 +49,7 @@ for data_tag, dataset in zip(data_tags, datasets):
     myInputFiles[data_tag] = [lambda cfg: setattr(cfg.Data,'inputDataset', dataset)]
 print(myInputFiles)
 
-userName = 'gmilella' #getUsernameFromSiteDB() 
+userName = 'vwachira' #getUsernameFromSiteDB() 
 configTmpl = config()
 # ----
 configTmpl.section_('General')
@@ -88,7 +88,7 @@ configTmpl.Data.publication = True
 
 # ----
 configTmpl.section_('Site')
-configTmpl.Site.storageSite = 'T2_DE_DESY'
+configTmpl.Site.storageSite = 'T2_BE_IIHE'
 # configTmpl.Site.blacklist = ['T2_IT_Pisa','T2_US_Vanderbilt','T2_BR_SPRACE','T2_UK_SGrid_RALPP','T2_ES_IFCA']
 # ----
 
