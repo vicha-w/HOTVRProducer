@@ -24,7 +24,7 @@ if args.isData:
 
 # requestName = "nanoaodUL"+args.year+"v1_230202"
 # requestName = "testNANO18_2"
-requestName = "nanoaod_hotvr_UL"+args.year+"v1_230510"
+requestName = "nanoaod_hotvr_UL"+args.year+"v1_231120"
 
 yaml_file_dict = {}
 with open('{}/crab_mini_to_nano/input_files_sf.yaml'.format(os.getcwd())) as yaml_f:

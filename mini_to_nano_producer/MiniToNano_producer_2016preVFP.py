@@ -27,10 +27,12 @@ process.maxEvents = cms.untracked.PSet(
 )
 
 # Input source
-process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/mc/RunIISummer20UL16MiniAODAPVv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_preVFP_v11-v1/100000/01F4A6F7-4A2D-CF48-94EC-7C586DD313E3.root'),
-    secondaryFileNames = cms.untracked.vstring()
-)
+#process.source = cms.Source("PoolSource",
+#    fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/mc/RunIISummer20UL16MiniAODAPVv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_preVFP_v11-v1/100000/01F4A6F7-4A2D-CF48-94EC-7C586DD313E3.root'),
+#    secondaryFileNames = cms.untracked.vstring()
+#)
+
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring())
 
 process.options = cms.untracked.PSet(
 
