@@ -88,7 +88,7 @@ else:
     configTmpl.Data.splitting = 'FileBased'
     configTmpl.Data.unitsPerJob = 20
 
-configTmpl.Data.totalUnits = 1  # ACTIVE WHEN TESTING 
+#configTmpl.Data.totalUnits = 1  # ACTIVE WHEN TESTING 
 configTmpl.Data.publication = True
 # ----
 
