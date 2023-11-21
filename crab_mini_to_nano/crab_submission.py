@@ -36,17 +36,23 @@ with open('{}/crab_mini_to_nano/input_files_sf.yaml'.format(os.getcwd())) as yam
 yaml_key = 'bkg'
 if args.isData: yaml_key = 'data'
 
-data_tags = yaml_file_dict[yaml_key][args.year].keys()
-datasets = []
+#data_tags = yaml_file_dict[yaml_key][args.year].keys()
+#datasets = []
+#for data_tag in yaml_file_dict[yaml_key][args.year].keys():
+#    datasets.append(yaml_file_dict[yaml_key][args.year][data_tag])
+#
+#print(data_tags)
+#print(datasets)
+
+#myInputFiles = dict()
+#for data_tag, dataset in zip(data_tags, datasets):
+#    #myInputFiles[data_tag] = [lambda cfg: setattr(cfg.Data,'inputDataset', dataset)]
+#    myInputFiles[data_tag] = dataset
+#print(myInputFiles)
+
+myInputFiles = {}
 for data_tag in yaml_file_dict[yaml_key][args.year].keys():
-    datasets.append(yaml_file_dict[yaml_key][args.year][data_tag])
-
-print(data_tags)
-print(datasets)
-
-myInputFiles = dict()
-for data_tag, dataset in zip(data_tags, datasets):
-    myInputFiles[data_tag] = [lambda cfg: setattr(cfg.Data,'inputDataset', dataset)]
+    myInputFiles[data_tag] = yaml_file_dict[yaml_key][args.year][data_tag]
 print(myInputFiles)
 
 userName = 'vwachira' #getUsernameFromSiteDB() 
@@ -108,11 +114,10 @@ if __name__ == '__main__':
             print("Failed submitting task: %s" % (cle))
 
 
-    for i,jobName in enumerate(sorted(myInputFiles.keys())):
-
+    for i, jobName in enumerate(sorted(myInputFiles.keys())):
         isData = False
-        myJob = myInputFiles[jobName]
-        i=i+1
+        #myJob = myInputFiles[jobName]
+        #i=i+1
         config = copy.deepcopy(configTmpl)
         config.General.requestName = jobName+"_"+requestName
         config.General.workArea = "crab/"+requestName+"/"+jobName
@@ -126,8 +131,9 @@ if __name__ == '__main__':
             config.Data.outLFNDirBase = "/store/user/"+userName+"/bkg_"+args.year+"/"+requestName
 
         print('outLFNDirBase {}'.format(config.Data.outLFNDirBase))
-        for mod in myJob:
-            mod(config)
+        #for mod in myJob:
+        #    mod(config)
+        config.Data.inputDataset = myInputFiles[jobName]
             
         if not os.path.exists(config.JobType.psetName):
             print("\nConfiguration file ", config.JobType.psetName, "does not exist.  Aborting...")
@@ -140,7 +146,7 @@ if __name__ == '__main__':
             
         print(config)
             
-        print("Submitting job ",i," of ",len(myInputFiles.keys()),":",config.General.workArea)
+        print("Submitting job ", i+1, " of ", len(myInputFiles.keys()),":",config.General.workArea)
         
         
         # p = Process(target=submit, args=(config,))
